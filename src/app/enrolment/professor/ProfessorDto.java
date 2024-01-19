@@ -1,8 +1,5 @@
 package app.enrolment.professor;
 
-import app.enrolment.student.Student;
-import app.enrolment.student.StudentDto;
-
 public class ProfessorDto {
     public static class SignUpRequest {
         private String loginId;
