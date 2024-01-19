@@ -6,6 +6,7 @@ import app.enrolment.student.Student;
 import app.enrolment.student.StudentRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LectureService {
@@ -17,9 +18,9 @@ public class LectureService {
     public Long registerLecture(Long professorId, LectureDto.RegisterRequest request) {
         Lecture lecture = request.toObject(
                 professorRepository.findByProfessorId(professorId));
-        lectureRepository.saveLecture(lecture);
+        Lecture savedLecture = lectureRepository.saveLecture(lecture);
         System.out.println("[ALERT] 강의를 등록했습니다.");
-        return lecture.getId();
+        return savedLecture.getId();
     }
 
     // 강의 상세 조회
@@ -36,6 +37,11 @@ public class LectureService {
     public List<LectureResponse> getLectureList() {
         List<LectureResponse> lectureResponses = new ArrayList<>();
         List<Lecture> lectures = lectureRepository.getLectures();
+
+        if (lectures == null || lectures.isEmpty()) {
+            return Collections.emptyList();
+        }
+
         for (Lecture lecture : lectures) {
             lectureResponses.add(LectureResponse.fromObject(lecture));
         }

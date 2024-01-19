@@ -94,11 +94,16 @@ public class SystemManager {
         System.out.println("[강의 목록]");
         System.out.println("아이디 | 담당교수 | 강의명 | 신청현황");
         System.out.println("--------------------------------");
-        for (LectureResponse lectureResponse : lectureResponses) {
-            System.out.println(lectureResponse.getLectureId() + " | "
-            + lectureResponse.getProfessorName() + " | "
-            + lectureResponse.getTitle() + " | "
-            + lectureResponse.getApplyCnt() + "/" + lectureResponse.getCapacity());
+
+        if (lectureResponses == null || lectureResponses.isEmpty()) {
+            System.out.println("현재 등록된 강의가 없습니다.");
+        } else {
+            for (LectureResponse lectureResponse : lectureResponses) {
+                System.out.println(lectureResponse.getLectureId() + " | "
+                + lectureResponse.getProfessorName() + " | "
+                + lectureResponse.getTitle() + " | "
+                + lectureResponse.getApplyCnt() + "/" + lectureResponse.getCapacity());
+            }
         }
     }
 

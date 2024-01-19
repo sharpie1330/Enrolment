@@ -6,9 +6,9 @@ public class StudentService {
     // 학생 등록
     public Long registerStudent(StudentDto.SignUpRequest request) {
         Student student = request.toObject();
-        studentRepository.saveStudent(student);
+        Student savedStudent = studentRepository.saveStudent(student);
         System.out.println("[ALERT] 학생 회원가입이 완료되었습니다.");
-        return student.getId();
+        return savedStudent.getId();
     }
 
     // 학생 로그인

@@ -6,9 +6,9 @@ public class ProfessorService {
     // 교수 등록
     public Long registerProfessor(ProfessorDto.SignUpRequest request) {
         Professor professor = request.toObject();
-        professorRepository.saveProfessor(professor);
+        Professor savedProfessor = professorRepository.saveProfessor(professor);
         System.out.println("[ALERT] 교수 회원가입이 완료되었습니다.");
-        return professor.getId();
+        return savedProfessor.getId();
     }
 
     // 교수 로그인
