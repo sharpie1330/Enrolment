@@ -1,5 +1,5 @@
 자바 스터디 2주차
-- [스터디원 *FrogBeak*](https://github.com/FrogBaek)
+- [스터디원 **FrogBaek**](https://github.com/FrogBaek)
 - 간단한 수강신청 프로그램 순수 JAVA로 만들어보기
 - 기능
   - 교수
