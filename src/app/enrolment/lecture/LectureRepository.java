@@ -3,12 +3,12 @@ package app.enrolment.lecture;
 import java.util.*;
 
 public class LectureRepository {
-    private Map<Long, Lecture> lectures = new HashMap<>();
-    private long order = 0L;
+    private static final Map<Long, Lecture> lectures = new HashMap<>();
+    private static long order = 0L;
 
     // 강의 등록
     public Lecture saveLecture(Lecture lecture) {
-        lecture.setId(order + 1);
+        lecture.setId(++order);
         lectures.put(lecture.getId(), lecture);
         return lecture;
     }

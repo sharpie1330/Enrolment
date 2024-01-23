@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentRepository {
-    private Map<Long, Student> students = new HashMap<>();
-    private long order = 0L;
+    private static final Map<Long, Student> students = new HashMap<>();
+    private static long order = 0L;
 
     // 학생 등록
     public Student saveStudent(Student student) {
-        student.setId(order + 1);
+        student.setId(++order);
         students.put(student.getId(), student);
         return student;
     }

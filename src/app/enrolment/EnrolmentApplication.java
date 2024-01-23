@@ -32,6 +32,7 @@ public class EnrolmentApplication {
 
         System.out.println("강의 등록");
         Long lectureId = systemManager.registerLecture(professorId, new LectureDto.RegisterRequest("컴퓨터 공학 기초", 15));
+        Long lectureId2 = systemManager.registerLecture(professorId, new LectureDto.RegisterRequest("컴퓨터 네트워크", 20));
 
         System.out.println("학생 회원가입");
         Long studentId = systemManager.StudentSignUp(new StudentDto.SignUpRequest("stu", "1234", "김학생"));

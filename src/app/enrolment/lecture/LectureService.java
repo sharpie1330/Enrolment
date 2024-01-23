@@ -1,6 +1,7 @@
 package app.enrolment.lecture;
 
 import app.enrolment.lecture.LectureDto.LectureResponse;
+import app.enrolment.professor.Professor;
 import app.enrolment.professor.ProfessorRepository;
 import app.enrolment.student.Student;
 import app.enrolment.student.StudentRepository;
@@ -16,8 +17,12 @@ public class LectureService {
 
     // 강의 등록
     public Long registerLecture(Long professorId, LectureDto.RegisterRequest request) {
-        Lecture lecture = request.toObject(
-                professorRepository.findByProfessorId(professorId));
+        Professor professor = professorRepository.findByProfessorId(professorId);
+        if (professor == null) {
+            System.out.println("[ERROR] 존재하지 않는 교수입니다. 강의를 등록할 수 없습니다.");
+            return null;
+        }
+        Lecture lecture = request.toObject(professor);
         Lecture savedLecture = lectureRepository.saveLecture(lecture);
         System.out.println("[ALERT] 강의를 등록했습니다.");
         return savedLecture.getId();

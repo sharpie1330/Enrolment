@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProfessorRepository {
-    private Map<Long, Professor> professors = new HashMap<>();
-    private long order = 0L;
+    private static final Map<Long, Professor> professors = new HashMap<>();
+    private static long order = 0L;
 
     // 교수 등록
     public Professor saveProfessor(Professor professor) {
-        professor.setId(order + 1);
+        professor.setId(++order);
         professors.put(professor.getId(), professor);
         return professor;
     }
